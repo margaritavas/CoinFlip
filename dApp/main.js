@@ -26,10 +26,13 @@ function tails(){
   $("#selection").text("Your selection is: Tails");
 }
 
-function flipCoin(selection){
+function flipCoin(){
   var bet = $("#bet_input").val();
+  var config = {
+    value:web3.utils.toWei(bet, "Ether"),
+  }
 
-contractInstance.methods.flipCoin(coinSelection).send({value:web3.utils.toWei(bet, "Ether")})
+contractInstance.methods.flipCoin(coinSelection).send(config)
 .on("transactionHash", function(hash){
   console.log(hash);
 })
@@ -42,7 +45,7 @@ contractInstance.methods.flipCoin(coinSelection).send({value:web3.utils.toWei(be
             console.log("The bet result is:" +receipt.events.result.returnValues.betResult);
               alert("You won! You doubled your bet!");
         }
-          else if (receipt.events.result.returnValues.betResult == false){
+          else {
             console.log("The bet result is:" +receipt.events.result.returnValues.betResult);
               alert("You lost! Better luck next time!");
           }
