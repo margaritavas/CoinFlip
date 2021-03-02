@@ -4,7 +4,7 @@ var selection;
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts){
-      contractInstance = new web3.eth.Contract(abi,"0x73A70c912538c614978Fa0cF6929890B622C9bD9", {from: accounts[0]});
+      contractInstance = new web3.eth.Contract(abi,"0x6182729cb01434A7FEf4a9b35c70acC276466f2F", {from: accounts[0]});
       console.log(contractInstance);
     });
 
@@ -26,7 +26,7 @@ function tails(){
   alert("You have selected Tails!")
 }
 
-function flipCoin(){
+function flipCoin(selection){
   var bet = $("#bet_input").val();
       bet= web3.utils.toWei(bet, "Ether")
 
