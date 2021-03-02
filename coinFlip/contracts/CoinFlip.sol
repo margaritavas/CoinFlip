@@ -2,7 +2,6 @@ pragma solidity 0.5.12;
 
 contract CoinFlip{
 
-    uint public balance;
     address public owner;
 
     constructor() public payable {
@@ -27,11 +26,8 @@ contract CoinFlip{
 
     mapping (address=>Player) bets;
 
-    event result(address player, bool betResult, uint valueBack);
+    event result(address player, bool betResult);
 
-    function addBalance() public payable {
-      require(msg.value>0);
-    }
 
     function random() public view returns(uint){
       return now % 2;
@@ -52,12 +48,12 @@ contract CoinFlip{
     if(bets[player].result == bets[player].coinSelection){
       toTransfer = bets[player].betInput*2;
       player.transfer(toTransfer);
-      emit result (msg.sender, true, toTransfer);
+      emit result (msg.sender, true);
       return true;
     }
 
     else {
-      emit result(msg.sender, false, 0);
+      emit result(msg.sender, false);
       return false;
     }
     }
