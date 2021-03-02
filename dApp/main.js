@@ -28,21 +28,23 @@ function tails(){
 
 function flipCoin(selection){
   var bet = $("#bet_input").val();
-      bet= web3.utils.toWei(bet, "Ether")
 
-contractInstance.methods.flipCoin(coinSelection).send({value:bet})
+contractInstance.methods.flipCoin(coinSelection).send({value:web3.utils.toWei(bet, "Ether")})
 .on("transactionHash", function(hash){
   console.log(hash);
 })
-.on("confirmationNr", function(confirmationNr){
+.on("confirmation", function(confirmationNr){
   console.log(confirmationNr);
 })
 .on("receipt", function(receipt){
+  console.log(receipt);
           if (receipt.events.result.returnValues.betResult == true){
-            alert("You won! You doubled your bet!");
-          }
+            console.log("The bet result is:" +receipt.events.result.returnValues.betResult);
+              alert("You won! You doubled your bet!");
+        }
           else if (receipt.events.result.returnValues.betResult == false){
-            alert("You lost! Better luck next time!");
+            console.log("The bet result is:" +receipt.events.result.returnValues.betResult);
+              alert("You lost! Better luck next time!");
           }
       });
     };
