@@ -27,7 +27,7 @@
         <img src=https://altramp.com/wp-content/uploads/2020/06/Ethereum-3.gif width="300" height="150" />
        <br></br>
 
-          <label for="bet">Make a prediction:</label>
+          <label for="selection" id="selection"> Step 1: Choose:</label>
           <style>
           .button {
             border-radius:8px;
@@ -37,6 +37,7 @@
           </style>
           <button class="button" style ="background-color:blue; border-color:none; color:white;"  type="button" id="head_button"> Head! </button>
           <button class="button" style ="background-color:black; border-color:none; color:white;"  type="button" id="tails_button"> Tails! </button>
+
             <br></br>
 
           <style type="text/css">
@@ -45,8 +46,8 @@
           font-size: 18px;}
           </style>
           <form action="/action_page.php">
-            <label for="bet">Place your bet:</label>
-          <input type="text" class="form-control" id="bet_input" placeholder="Bet value in ETH (Maximum bet is 3 ETH)" style="text-align:left">
+            <label for="bet">Step 2: Place your bet:</label>
+          <input type="text" class="form-control" id="bet_input" placeholder="Bet value in ETH" style="text-align:left">
             <style>
             .button1 {
               border-radius:25px;
