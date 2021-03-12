@@ -58,8 +58,8 @@ function getRandomNumber() public payable returns(bytes32){
     );
 
     emit LogNewProvableQuery("Provable query was sent. Waiting for the answer..");
-    return queryID
-}
+    return queryID;
+  }
 
     function __callback(bytes32 _queryID, string memory _result) public {
       require(msg.sender == provable_cbAddress());
